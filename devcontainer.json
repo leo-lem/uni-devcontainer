@@ -7,9 +7,6 @@
 			"TEX_PACKAGES": "algorithm2e environ subfig caption amsmath geometry hyperref xcolor docmute import etoolbox pgf ifoddpage tools relsize float epstopdf-pkg"
 		}
 	},
-	"mounts": [
-		"source=${localEnv:HOME}/.tex,target=/home/vscode/texmf/tex/latex,type=bind,consistency=cached"
-	],
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -20,12 +17,8 @@
 			"settings": {
 				"latex-workshop.intellisense.optionalArgsEntries.enabled": false,
 				"latex-workshop.synctex.afterBuild.enabled": true,
-				"[latex]": {
-					"editor.defaultFormatter": "James-Yu.latex-workshop"
-				},
-				"[tex]": {
-					"editor.defaultFormatter": "James-Yu.latex-workshop"
-				},
+				"[latex]": { "editor.defaultFormatter": "James-Yu.latex-workshop" },
+				"[tex]": { "editor.defaultFormatter": "James-Yu.latex-workshop" },
 				"latex-workshop.latex.outDir": ".texbuild",
 				"latex-workshop.message.warning.show": false,
 				"latex-workshop.message.badbox.show": false,
