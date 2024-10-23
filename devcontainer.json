@@ -4,7 +4,7 @@
 		"dockerfile": "Dockerfile",
 		"args": {
 			"SCHEME": "minimal",
-			"TEX_PACKAGES": "algorithm2e environ subfig caption amsmath geometry hyperref xcolor docmute import etoolbox pgf ifoddpage tools relsize float epstopdf-pkg silence"
+			"TEX_PACKAGES": "algorithm2e environ subfig caption amsmath geometry hyperref xcolor docmute import etoolbox pgf ifoddpage tools relsize float epstopdf-pkg silence pdfpages pdflscape"
 		}
 	},
 	"customizations": {
@@ -17,11 +17,15 @@
 			"settings": {
 				"latex-workshop.intellisense.optionalArgsEntries.enabled": false,
 				"latex-workshop.synctex.afterBuild.enabled": true,
-				"[latex]": { "editor.defaultFormatter": "James-Yu.latex-workshop" },
-				"[tex]": { "editor.defaultFormatter": "James-Yu.latex-workshop" },
+				"[latex]": {
+					"editor.defaultFormatter": "James-Yu.latex-workshop"
+				},
+				"[tex]": {
+					"editor.defaultFormatter": "James-Yu.latex-workshop"
+				},
 				"latex-workshop.latex.outDir": ".texbuild",
 				"latex-workshop.message.warning.show": false,
-				"latex-workshop.message.badbox.show": false,
+				"latex-workshop.message.badbox.show": "none",
 				"latex-workshop.message.error.show": false,
 				"latex-workshop.latex.autoClean.run": "never",
 				"latex-workshop.latex.clean.args": [
@@ -29,7 +33,7 @@
 					"%DOC_EXT%",
 					"-outdir=%OUTDIR%"
 				],
-				"latex-workshop.latexindent.args": [
+				"latex-workshop.formatting.latexindent.args": [
 					"%TMPFILE%",
 					"-y=defaultIndent: '%INDENT%'"
 				],
