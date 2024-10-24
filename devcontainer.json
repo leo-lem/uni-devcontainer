@@ -4,7 +4,7 @@
 		"dockerfile": "Dockerfile",
 		"args": {
 			"SCHEME": "minimal",
-			"TEX_PACKAGES": "algorithm2e environ subfig caption amsmath geometry hyperref xcolor docmute import etoolbox pgf ifoddpage tools relsize float epstopdf-pkg silence pdfpages pdflscape"
+			"TEX_PACKAGES": "algorithm2e environ subfig caption amsmath geometry hyperref xcolor docmute import etoolbox pgf ifoddpage tools relsize float epstopdf-pkg silence pdfpages pdflscape beamer"
 		}
 	},
 	"customizations": {
