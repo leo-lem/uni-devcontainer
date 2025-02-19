@@ -41,7 +41,8 @@
 					"%LINE%",
 					"%PDF%",
 					"%DOC_EXT%"
-				]
+				],
+				"latex-workshop.formatting.latex": "latexindent"
 			}
 		}
 	}
