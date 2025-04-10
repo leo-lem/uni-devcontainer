@@ -1,0 +1,123 @@
+\RequirePackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{summary}[2024/02/14]
+
+% ---------------------------------------------------------------------
+% Document setup
+% ---------------------------------------------------------------------
+
+\RequirePackage[margin=2cm]{geometry}
+\RequirePackage{hyperref,xcolor,graphicx}
+\RequirePackage{docmute,import} % for including other files
+
+\hypersetup{
+  pdfpagemode=UseOutlines,
+  bookmarksnumbered
+}
+
+
+
+% ---------------------------------------------------------------------
+% Graphics
+% ---------------------------------------------------------------------
+\RequirePackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\counterwithin{figure}{section}
+\newcommand\resources[1]{\graphicspath{{#1}}}
+
+
+
+% ---------------------------------------------------------------------
+% Math
+% ---------------------------------------------------------------------
+\RequirePackage{amsmath,amssymb}
+
+\newcommand\bigO{\mathcal{O}}
+\newcommand\littleO{{\scriptscriptstyle\mathcal{O}}}
+
+
+
+% ---------------------------------------------------------------------
+% Algorithms
+% ---------------------------------------------------------------------
+\RequirePackage[longend,ruled,vlined,linesnumbered]{algorithm2e}
+
+\counterwithin{algocf}{section}
+\SetKwComment{comment}{// }{}
+\SetKwComment{explain}{$\triangleright$\ }{}
+\newcommand\commentfont[1]{\textcolor{lightgray}{#1}}
+\SetCommentSty{commentfont}
+\DontPrintSemicolon
+
+\newcommand\textalgo[1]{\texttt{#1}}
+\newcommand\textproblem[1]{\texttt{\uppercase{#1}}}
+
+\newenvironment{alg}{
+  \par
+  \begin{algorithm}[H]
+    \newcommand\signed[3]{
+      \caption{\textalgo{##1}(\ifx##2\empty\else$##2$\fi)\ifx##3\empty\else $\to$ $##3$\fi}\label{alg:##1}
+    }
+    \newcommand\params[2]{
+      \ifx##1\empty\else\KwData{##1}\fi
+      \ifx##2\empty\else\KwResult{##2}\fi
+      \BlankLine
+    }
+    \newcommand\call[2]{\textalgo{##1}($##2$)}
+    \newcommand\callref[2]{\textalgo{##1}($##2$)\explain*{\algrefp{##1}}}
+    }{
+  \end{algorithm}
+}
+
+\newcommand\algref[1]{\textalgo{#1} algorithm, \ref{alg:#1},}
+\newcommand\algrefp[1]{\textalgo{#1} algorithm (\ref{alg:#1})}
+
+
+
+% ---------------------------------------------------------------------
+% Floats
+% ---------------------------------------------------------------------
+% default float placement H(ere)
+\RequirePackage{float}
+\floatplacement{figure}{H}
+\floatplacement{table}{H}
+
+
+% ---------------------------------------------------------------------
+% Title page with TOC
+% ---------------------------------------------------------------------
+% fixes the table of contents text overlap
+\renewcommand*\numberline[1]{\hb@xt@4em{#1\hfil}}
+
+% only show sections and subsections in the table of contents
+\setcounter{tocdepth}{2}
+
+\newcommand\subject[1]{\def\@subject{#1}}
+\newcommand\subtitle[1]{\def\@subtitle{#1}}
+\newcommand\semester[1]{\def\@semester{#1}}
+
+\providecommand\@subtitle{Summary}
+
+% creates a title page with the subject, subtitle and semester
+\newcommand\createtitle{
+  \begin{titlepage}
+    \title{
+      \@subject
+      \vspace{.5ex}\\
+      \large\@subtitle\\
+      \small\@semester
+    }
+    \date{}
+    \maketitle
+    \thispagestyle{empty}
+
+    \tableofcontents
+    \label{toc}
+    \addtocontents{toc}{\protect\contentsline{section}{\nameref{toc}}{}{}}
+  \end{titlepage}
+}

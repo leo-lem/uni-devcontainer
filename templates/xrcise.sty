@@ -1,0 +1,100 @@
+\RequirePackage{../.template/summary}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{xrcise}[2024/02/17]
+
+% ---------------------------------------------------------------------
+% Package options
+% ---------------------------------------------------------------------
+\newif\ifsolutions
+\DeclareOption{solutions}{\global\solutionstrue}
+\ProcessOptions\relax
+
+
+
+% ---------------------------------------------------------------------
+% Document setup
+% ---------------------------------------------------------------------
+\RequirePackage{multicol, environ, graphicx, subfig}
+
+\renewcommand\@subtitle{Exercises\ifsolutions~with solutions\fi}
+
+
+
+% ---------------------------------------------------------------------
+% Exercises
+% ---------------------------------------------------------------------
+\newcommand\sheet[2][\relax]{
+  \ifx#1\empty
+    \section*{#2}\addcontentsline{toc}{section}{#2}
+  \else
+    \ifx#1\relax
+    \else
+      \setcounter{section}{#1}
+      \addtocounter{section}{-1}
+    \fi
+    \section{#2}
+  \fi
+}
+
+\NewEnviron{solution}{
+  \psolution{\BODY}
+}
+
+% #1: optional exercise number
+% #2: exercise title
+\newenvironment{exercise}[2][\relax]{
+  \ifx#1\relax\else
+    \setcounter{subsection}{#1}
+    \addtocounter{subsection}{-1}
+  \fi
+  \subsection{#2}
+}{
+}
+
+\newcommand\psolution[1]{
+  \ifsolutions
+    \textcolor{gray}{#1}
+    % \else % uncomment to add whitespace when solutions are off
+    %   \textcolor{white}{#1}
+  \fi
+}
+
+% ---------------------------------------------------------------------
+% Custom commands
+% ---------------------------------------------------------------------
+
+\newcommand{\hint}[1]{
+  \vspace{.5em}\par
+  \textbf{Hinweis}: \textit{#1}
+}
+
+\newcommand{\points}[1][\relax]{
+  \ifx#1\relax
+    \hfill(\textit{$1$~Punkt})
+  \else
+    \hfill(\textit{$#1$~Punkte})
+  \fi
+}
+
+\newcommand\xmark{$\times$}
+
+\newenvironment{induction}[1][n]{
+  \newcommand\@inductionitem[2]{\item[\textbf{##1}]{\footnotesize($#1\gets##2$)}: }
+  \newcommand\base[1][0]{\@inductionitem{IA}{##1}}
+  \newcommand\cond[1][#1]{\@inductionitem{IV}{##1}}
+  \newcommand\step[1][#1+1]{\@inductionitem{IS}{##1}}
+  \begin{itemize}
+    }{
+  \end{itemize}
+}
+
+\newenvironment{invariant}{
+  \newcommand\@invariantitem[1]{\item[\textbf{##1}:]}
+  \newcommand\init[1]{\@invariantitem{Initialisierung}##1}
+  \newcommand\pres[1]{\@invariantitem{Erhaltung}##1}
+  \newcommand\term[1]{\@invariantitem{Termination}##1}
+  \begin{itemize}
+    }{
+  \end{itemize}
+}

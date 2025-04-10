@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:debian AS assemble
+FROM mcr.microsoft.com/devcontainers/base:debian AS base
 
 # -------------------------
 # Install required packages
@@ -14,7 +14,7 @@ RUN apt-get update -y &&\
 # Install texlive
 # ---------------
 ARG SCHEME
-ARG YEAR="2024"
+ARG YEAR="2025"
 ARG ARCH="aarch64-linux"
 ARG MIRROR="https://mirror.ctan.org/systems/texlive/tlnet/"
 WORKDIR /tmp
@@ -31,6 +31,14 @@ ENV PATH="$PATH:/usr/local/texlive/$YEAR/bin/$ARCH"
 # --------------------
 RUN cpan -i App::cpanminus &&\
     cpanm YAML::Tiny File::HomeDir Unicode::GCString Log::Log4perl Log::Dispatch::File || exit 0
+
+
+
+# -------------------------
+# Copy template files
+# -------------------------
+RUN mkdir -p ~/.texmf/tex/latex
+COPY templates/ ~/.texmf/tex/latex/
 
 
 
