@@ -1,0 +1,18 @@
+name: Prebuild Devcontainer
+
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  prebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pre-build dev container image
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: leolemm/latex-devcontainer:latest
+          cacheFrom: leolemm/latex-devcontainer:latest
+          push: always
+      
+      
