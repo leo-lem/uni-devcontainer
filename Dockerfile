@@ -42,9 +42,4 @@ COPY templates/ ~/.texmf/tex/latex/
 
 
 
-# -------------------------
-# Install latex, latexmk, latexindent and specified packages
-# -------------------------
 USER vscode
-ARG TEX_PACKAGES
-RUN tlmgr install latex latex-bin latexmk latexindent ${TEX_PACKAGES}
