@@ -22,5 +22,6 @@ jobs:
         with:
           configFile: devcontainer.json
           imageName: leolemm/latex-devcontainer
+          cacheTo: leolemm/latex-devcontainer
           cacheFrom: leolemm/latex-devcontainer
           push: always
