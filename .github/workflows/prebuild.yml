@@ -2,7 +2,7 @@ name: Prebuild Devcontainer
 
 on: 
   push:
-    branches: [main]
+    branches: [main, deploy] # TODO: only main
 
 jobs:
   prebuild:
@@ -14,5 +14,3 @@ jobs:
           imageName: leolemm/latex-devcontainer:latest
           cacheFrom: leolemm/latex-devcontainer:latest
           push: always
-      
-      
