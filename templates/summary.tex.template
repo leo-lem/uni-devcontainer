@@ -1,0 +1,13 @@
+\documentclass{article}
+
+\usepackage{../.template/summary}
+
+\subject{}
+\semester{Winter 2024}
+\author{Leopold Lemmermann}
+
+\begin{document}\createtitle
+
+\section
+
+\end{document}

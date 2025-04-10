@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:debian AS assemble
+FROM mcr.microsoft.com/devcontainers/base:debian AS base
 
 # -------------------------
 # Install required packages
@@ -14,7 +14,7 @@ RUN apt-get update -y &&\
 # Install texlive
 # ---------------
 ARG SCHEME
-ARG YEAR="2024"
+ARG YEAR="2025"
 ARG ARCH="aarch64-linux"
 ARG MIRROR="https://mirror.ctan.org/systems/texlive/tlnet/"
 WORKDIR /tmp
@@ -35,8 +35,11 @@ RUN cpan -i App::cpanminus &&\
 
 
 # -------------------------
-# Install latex, latexmk, latexindent and specified packages
+# Copy template files
 # -------------------------
+RUN mkdir -p ~/.texmf/tex/latex
+COPY templates/ ~/.texmf/tex/latex/
+
+
+
 USER vscode
-ARG TEX_PACKAGES
-RUN tlmgr install latex latex-bin latexmk latexindent ${TEX_PACKAGES}
