@@ -10,7 +10,7 @@
 		},
 		"ghcr.io/prulloac/devcontainer-features/latex:1.3.2": {
 			"scheme": "basic",
-			"texPackages": "silence,xcolor,"
+			"texPackages": "silence,xcolor,docmute,import,pgf,algorithm2e,ifoddpage,relsize,float,environ,subfig,caption"
 		}
 	},
 	"customizations": {
