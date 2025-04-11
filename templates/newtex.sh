@@ -18,13 +18,13 @@ case $TYPE in
 
 \usepackage[]{xrcise}
 
-\subject{}
-\semester{Winter 2024}
+\subject{<subject>}
+\semester{<semester>}
 \author{Leopold Lemmermann}
 
 \begin{document}\createtitle
 
-\section
+\section{}
 
 \end{document}
 EOF
@@ -35,13 +35,13 @@ EOF
 
 \usepackage{summary}
 
-\subject{}
-\semester{Winter 2024}
+\subject{<subject>}
+\semester{<semester>}
 \author{Leopold Lemmermann}
 
 \begin{document}\createtitle
 
-\section
+\section{}
 
 \end{document}
 EOF
