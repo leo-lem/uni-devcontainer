@@ -1,3 +1,3 @@
 # Uni Devcontainer
 
-Includes LaTex and Python/Jupyter support.
+Includes LaTeX and Python/Jupyter support.
