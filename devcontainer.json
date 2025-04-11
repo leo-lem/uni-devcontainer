@@ -3,10 +3,7 @@
 	"dockerFile": "Dockerfile",
 	"features": {
 		"ghcr.io/devcontainers/features/python:1.7.1": {
-			"version": "3.13",
-			"toolsToInstall": [
-				"nltk"
-			]
+			"version": "3.13"
 		},
 		"ghcr.io/prulloac/devcontainer-features/latex:1.3.2": {
 			"scheme": "basic",
