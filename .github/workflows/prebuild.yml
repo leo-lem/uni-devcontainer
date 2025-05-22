@@ -21,6 +21,6 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           configFile: devcontainer.json
-          imageName: leolemm/latex-devcontainer
-          cacheFrom: leolemm/latex-devcontainer
+          imageName: leolemm/uni-devcontainer
+          cacheFrom: leolemm/uni-devcontainer
           push: always
