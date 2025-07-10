@@ -27,6 +27,6 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           configFile: devcontainer.json
-          imageName: ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}
+          imageName: ghcr.io/${{ env.IMAGE_NAME }}
           cacheFrom: ${{ env.IMAGE_NAME }}
           push: always
