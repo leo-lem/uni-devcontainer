@@ -7,7 +7,7 @@ concurrency:
   cancel-in-progress: true
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
 
 jobs:
   build-and-push:
@@ -27,7 +27,6 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           configFile: devcontainer.json
-          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          imageName: ${{ env.IMAGE_NAME }}
           cacheFrom: ${{ env.IMAGE_NAME }}
           push: always
-          platform: linux/arm64
