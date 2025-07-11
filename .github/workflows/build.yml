@@ -1,8 +1,10 @@
 name: Build and push devcontainer
-
 on: 
   push:
     branches: [main, 4-build-image-for-arm64] # TODO: Change to main branch when ready
+concurrency:
+  group: build-and-push-devcontainer
+  cancel-in-progress: true
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
