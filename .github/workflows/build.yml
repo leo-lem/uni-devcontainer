@@ -2,14 +2,14 @@ name: Build and push devcontainer
 
 on: 
   push:
-    branches: [main, 4-build-image-for-arm64]
+    branches: [main, 4-build-image-for-arm64] # TODO: Change to main branch when ready
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
       packages: write
