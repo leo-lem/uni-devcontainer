@@ -2,7 +2,7 @@ name: Build and push devcontainer
 
 on: 
   push:
-    branches: [main]
+    branches: [main, 4-build-image-for-arm64]
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -28,3 +28,4 @@ jobs:
           imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           cacheFrom: ${{ env.IMAGE_NAME }}
           push: always
+          platform: linux/arm64
