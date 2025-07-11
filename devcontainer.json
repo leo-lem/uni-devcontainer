@@ -1,22 +1,13 @@
 {
-	"name": "Uni",
 	"dockerFile": "Dockerfile",
 	"features": {
-		"ghcr.io/devcontainers/features/python:1.7.1": {
-			"version": "3.13"
-		},
-		"ghcr.io/prulloac/devcontainer-features/latex:1.3.2": {
+		"ghcr.io/prulloac/devcontainer-features/latex:1": {
 			"scheme": "basic",
-			"texPackages": "silence,xcolor,docmute,import,pgf,algorithm2e,ifoddpage,relsize,float,environ,subfig,caption"
+			"packages": "silence,xcolor,docmute,import,pgf,algorithm2e,ifoddpage,relsize,float,environ,subfig,caption"
 		}
 	},
 	"customizations": {
 		"vscode": {
-			"extensions": [
-				"eamodio.gitlens",
-				"GitHub.copilot",
-				"ms-toolsai.jupyter"
-			],
 			"settings": {
 				"latex-workshop.intellisense.optionalArgsEntries.enabled": false,
 				"latex-workshop.synctex.afterBuild.enabled": true,

@@ -1,15 +1,17 @@
 name: Build and push devcontainer
-
 on: 
   push:
     branches: [main]
+concurrency:
+  group: build-and-push-devcontainer
+  cancel-in-progress: true
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
       packages: write
@@ -25,6 +27,6 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           configFile: devcontainer.json
-          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          imageName: ${{ env.IMAGE_NAME }}
           cacheFrom: ${{ env.IMAGE_NAME }}
           push: always
